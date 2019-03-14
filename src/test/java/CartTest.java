@@ -7,6 +7,7 @@ public class CartTest {
     private Cart cart;
     private Item item;
     private ArrayList<Item> items;
+    private ArrayList<String> itemQs;
 
     @Before
     public void initializeCart(){
@@ -19,6 +20,9 @@ public class CartTest {
         //System.out.println("bye");
         cart.itemList.clear();
         Cart.totalPrice=0.0;
+        if(items!=null){
+            items.clear();
+        }
     }
 
     @Test
@@ -48,7 +52,15 @@ public class CartTest {
 
     @Test
     public void itemQuantitiesTest(){
-
+        itemQs=new ArrayList<>();
+        item=new Item("Handbag",500,false);
+        cart.addItem(item,5);
+        itemQs.add("Handbag - x5");
+        item=new Item("Watch",300,false);
+        cart.addItem(item,6);
+        itemQs.add("Watch - x6");
+        Assert.assertEquals("Item Quantities Test","Handbag - x5",cart.itemQuantities().get(0));
+        Assert.assertEquals("item Quantities Test",itemQs.toString(),cart.itemQuantities().toString());
     }
 
 }
