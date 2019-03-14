@@ -6,6 +6,10 @@ public class Cart {
     ArrayList<String> itemQuants=new ArrayList<>();
     static double totalPrice;
 
+    static double getTotalPrice(){
+        return totalPrice;
+    }
+
     ArrayList<Item> getItems(){
         return itemList;
     }

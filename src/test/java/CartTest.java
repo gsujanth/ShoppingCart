@@ -23,6 +23,9 @@ public class CartTest {
         if(items!=null){
             items.clear();
         }
+        if(itemQs!=null){
+            itemQs.clear();
+        }
     }
 
     @Test
@@ -36,7 +39,6 @@ public class CartTest {
         item=new Item("Handbag",500,false);
         cart.addItem(item,5);
         items.add(item);
-        Assert.assertEquals("Get Items Test",new Item("Handbag",500,false).toString(),cart.getItems().get(0).toString());
         item=new Item("Watch",300,false);
         cart.addItem(item,5);
         items.add(item);
@@ -47,7 +49,7 @@ public class CartTest {
     public void addItemTest(){
         cart.addItem(new Item("Handbag",500,false),5);
         cart.addItem(new Item("Watch",300,false),6);
-        Assert.assertTrue(4300.0==Cart.totalPrice);
+        Assert.assertTrue(4300.0==Cart.getTotalPrice());
     }
 
     @Test
@@ -59,7 +61,6 @@ public class CartTest {
         item=new Item("Watch",300,false);
         cart.addItem(item,6);
         itemQs.add("Watch - x6");
-        Assert.assertEquals("Item Quantities Test","Handbag - x5",cart.itemQuantities().get(0));
         Assert.assertEquals("item Quantities Test",itemQs.toString(),cart.itemQuantities().toString());
     }
 
